@@ -8,6 +8,7 @@ for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
 function handleClick() {
   let buttonClicked = this.innerHTML;
+  buttonAnimation(buttonClicked);
   handleSound(buttonClicked);
 }
 
@@ -15,8 +16,18 @@ function handleClick() {
 
 document.addEventListener("keydown", (e) => {
   let keyPressed = e.key;
+  buttonAnimation(keyPressed);
   handleSound(keyPressed);
 });
+
+// Adding animation to buttons
+
+function buttonAnimation(buttonToAnimate){
+    document.querySelector("." + buttonToAnimate).classList.add("pressed");
+    setTimeout(() => {
+        document.querySelector("." + buttonToAnimate).classList.remove("pressed");
+    }, "150");
+}
 
 // A function to check the values and play sound accordingly
 
